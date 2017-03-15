@@ -10,7 +10,7 @@
         var app = angular.module('PaceTimeCalculator', []);
         app.controller('myCtrl', function ($scope) {
             $scope.TPH = 8000; $scope.USERS = 120; $scope.TT = 5;
-            $scope.NTT = 5; $scope.TOTALT = 6; $scope.RT = 1; $scope.TPI = 1.5;
+            $scope.NTT = 5; $scope.TOTALT = 6; $scope.RT = 1; $scope.TPI = 9;
             $scope.Math = window.Math;
 
         });
@@ -84,27 +84,27 @@
                     <tr>
                         <td class="text-left">Iteration Time With TT</td>
                         <td class="text-left">Time To Complete One Iteration</td>
-                        <td class="text-left">{{TPT * TOTALT + TT * NTT }}</td>
+                        <td class="text-left">{{(TPI * 1) + (TT * NTT) }}</td>
                     </tr>
                     <tr>
                         <td class="text-left">Per User TPH Achievable</td>
                         <td class="text-left">Acheivable TPH By any User</td>
-                        <td class="text-left">{{Math.round(3600/((TPT * TOTALT) + (TT * NTT)))}}</td>
+                        <td class="text-left">{{Math.round(3600/((TPI * 1) + (TT * NTT)))}}</td>
                     </tr>
                     <tr>
                         <td class="text-left">Iterations Per User</td>
                         <td class="text-left">Iteration Per User Required</td>
-                        <td class="text-left">{{ Math.round((TPH/USERS)/PT) }}</td>
+                        <td class="text-left">{{ Math.round((TPH/USERS)/RT) }}</td>
                     </tr>
                     <tr>
                         <td class="text-left">Available Time Per Iteration</td>
                         <td class="text-left">Remaing Time After Iteration</td>
-                        <td class="text-left">{{Math.round(3600/((TPH/USERS)/PT))}}</td>
+                        <td class="text-left">{{Math.round(3600/((TPH/USERS)/RT))}}</td>
                     </tr>
                     <tr>
                         <th class="text-left" colspan="2">Pacing Time (in Seconds)</th>
 
-                        <th class="text-left">{{Math.floor(3600/Math.floor(Math.floor(TPH/USERS)/PT)) - (TPT * TOTALT + TT * NTT) }}</th>
+                        <th class="text-left">{{Math.floor(3600/Math.floor(Math.floor(TPH/USERS)/RT)) - ((TPI * 1) + (TT * NTT)) }}</th>
                     </tr>
                 </tbody>
             </table>
